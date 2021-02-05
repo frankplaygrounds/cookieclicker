@@ -1,77 +1,71 @@
 <html>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-	
-	<body style="background-color:#cccccc;">
-	<title>Cookie Clicker</title>
-	
-	<style>
-	.fabbrica{
-    height:107px;
-    width:87px;
-	}
-	
-	.centra{
-	position: absolute; 
-	top: 50%; 
-	left: 50%; 
-	transform: translate(-50%, -50%);
-	}
-	</style>
-	
-	<center><div class="centra">
-		<div style="font-family: 'Cookie', cursive; font-size: 550%;">Cookie Clicker</div>
-		<img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpixelartmaker.com%2Fart%2F1a6ddf4b9a0f2d9.png&f=1&nofb=1" style="cursor: pointer;" onClick="clicked()">
-		<div id="scoreboard" style="font-family: 'Cookie', cursive; font-size: 250%;"></div><br>
-		<button id="upgrade" onClick="upgrade()">First upgrade - Cookie Price: 2</button><br><br>
-		<button onClick="saveandquit()">Save your progress</button>
-	</div></center>
-	
-	<script>
-	var click = 0;
-	var boost = 1;
-	var boosted = false;
-	
-	let searchParams = new URLSearchParams(window.location.search);
-	var url = location.search;
-	if (url.indexOf('score') !== -1){
-			click = parseInt((searchParams.get('score')));
-	}
-	else{
-	}
-	
-	if (url.indexOf('boosted=true') !== -1){
-		var upgrade = document.getElementById("upgrade");
-		upgrade.style.display = "none";
-	}
-	else{
-	}
-	
-		document.getElementById("scoreboard").innerHTML = click;
-	
-	function clicked() {
-	click = click + boost;
-	document.getElementById("scoreboard").innerHTML = click;
-	}
-	
-	function upgrade() {
-	if (click >= 2){
-	boosted = true;
-	var upgrade = document.getElementById("upgrade");
-	boost = 2;
-	click = click - 2;
-	document.getElementById("scoreboard").innerHTML = click;
-	upgrade.style.display = "none";
-	}
-	else{
-	alert("You're missing some cookies.")
-	}
-	}
-	
-	function saveandquit() {
-	var save = prompt("Copy this url to save your progress", "https://frankplaygrounds.github.io/cookieclicker/cookie.html?score=" + click + "?boosted=" + boosted)
-	}
-	</script>
-	
-	</body>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+  <body style="background-color:#cccccc;">
+    <title>Cookie Clicker
+    </title>
+    <style>
+      .centra{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <center>
+      <div class="centra">
+        <div style="font-family: 'Cookie', cursive; font-size: 550%;">Cookie Clicker
+        </div>
+        <img src="https://raw.githubusercontent.com/frankplaygrounds/cookieclicker/main/cookie.png" style="cursor: pointer;" onClick="clicked()">
+        <div id="scoreboard" style="font-family: 'Cookie', cursive; font-size: 250%;">
+        </div>
+        <br>
+        <button id="upgrade" onClick="upgrade()">First upgrade - Cookie Price: 2
+        </button>
+        <br>
+        <br>
+        <button onClick="saveandquit()">Save your progress
+        </button>
+      </div>
+    </center>
+    <script>
+      var click = 0;
+      var boost = 1;
+      var boosted = false;
+      let searchParams = new URLSearchParams(window.location.search);
+      var url = location.search;
+      if (url.indexOf('score') !== -1){
+        click = parseInt((searchParams.get('score')));
+      }
+      else{
+      }
+      if (url.indexOf('boosted=true') !== -1){
+        var upgrade = document.getElementById("upgrade");
+        upgrade.style.display = "none";
+      }
+      else{
+      }
+      document.getElementById("scoreboard").innerHTML = click;
+      function clicked() {
+        click = click + boost;
+        document.getElementById("scoreboard").innerHTML = click;
+      }
+      function upgrade() {
+        if (click >= 2){
+          boosted = true;
+          var upgrade = document.getElementById("upgrade");
+          boost = 2;
+          click = click - 2;
+          document.getElementById("scoreboard").innerHTML = click;
+          upgrade.style.display = "none";
+        }
+        else{
+          alert("You're missing some cookies.")
+        }
+      }
+      function saveandquit() {
+        var save = prompt("Copy this url to save your progress", "https://frankplaygrounds.github.io/cookieclicker/cookie.html?score=" + click + "?boosted=" + boosted)
+        }
+    </script>
+  </body>
 </html>
