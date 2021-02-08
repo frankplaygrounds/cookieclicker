@@ -1,9 +1,12 @@
 <html>
+	<!--Font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-  <body style="background-color:#cccccc;">
-    <title>Cookie Clicker
-    </title>
+  	<!--Sfondo-->
+  <body style="background-color:#cccccc;" onLoad="starttimer()">
+		<!--Titolo della pagina-->
+    <title>Cookie Clicker</title>
+		<!--CSS per fare in modo che il contenuto si trovi al centro della pagina-->
     <style>
       .centra{
         position: absolute;
@@ -12,15 +15,16 @@
         transform: translate(-50%, -50%);
       }
     </style>
+	
+			<!--Titolo, Immagine e bottoni con relativi id e funzioni -->
     <center>
       <div class="centra">
         <div style="font-family: 'Cookie', cursive; font-size: 550%;">Cookie Clicker
         </div>
-        <img src="https://raw.githubusercontent.com/frankplaygrounds/cookieclicker/main/cookie.png" style="cursor: pointer;" onClick="clicked()">
-        <div id="scoreboard" style="font-family: 'Cookie', cursive; font-size: 250%;">
-        </div>
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpixelartmaker.com%2Fart%2F1a6ddf4b9a0f2d9.png&f=1&nofb=1" style="cursor: pointer;" onClick="clicked()">
+        <div id="scoreboard" style="font-family: 'Cookie', cursive; font-size: 250%;"></div>
         <br>
-        <button id="upgrade" onClick="upgrade()">First upgrade - Cookie Price: 2
+        <button id="upgrade" onClick="upgrade()">+2 First upgrade - 50 Cookies</button>
         </button>
         <br>
         <br>
@@ -28,10 +32,17 @@
         </button>
       </div>
     </center>
+	
+			<!--Inizia lo script-->
     <script>
+	 //Dichiaro le variabili
+
       var click = 0;
       var boost = 1;
       var boosted = false;
+	  
+	  //Qui leggo i dati di salvataggio
+	  
       let searchParams = new URLSearchParams(window.location.search);
       var url = location.search;
       if (url.indexOf('score') !== -1){
@@ -45,26 +56,33 @@
       }
       else{
       }
-      document.getElementById("scoreboard").innerHTML = click;
+		document.getElementById("scoreboard").innerHTML = click;
+		
+		//Funzioni click e upgrade
+		
       function clicked() {
         click = click + boost;
         document.getElementById("scoreboard").innerHTML = click;
       }
       function upgrade() {
-        if (click >= 2){
+        if (click >= 50){
           boosted = true;
           var upgrade = document.getElementById("upgrade");
           boost = 2;
-          click = click - 2;
+          click = click - 50;
           document.getElementById("scoreboard").innerHTML = click;
           upgrade.style.display = "none";
         }
         else{
-          alert("You're missing some cookies.")
+          alert("You don't have enough cookies.")
         }
       }
+	  
+	  // Salvo il progresso
+	  
       function saveandquit() {
-        var save = prompt("Copy this url to save your progress", "https://frankplaygrounds.github.io/cookieclicker/cookie.html?score=" + click + "?boosted=" + boosted)
+		var location = window.location.origin + window.location.pathname;
+        var save = prompt("Save this url somewhere to save your progress", location + "?score=" + click + "?boosted=" + boosted)
         }
     </script>
   </body>
