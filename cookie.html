@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<!--Font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
   	<!--Sfondo-->
-  <body style="background-color:#cccccc;" onLoad="starttimer()">
+  <body style="background-color:#cccccc;">
 		<!--Titolo della pagina-->
     <title>Cookie Clicker</title>
 		<!--CSS per fare in modo che il contenuto si trovi al centro della pagina-->
@@ -25,9 +26,11 @@
         <div id="scoreboard" style="font-family: 'Cookie', cursive; font-size: 250%;"></div>
         <br>
         <button id="upgrade" onClick="upgrade()">+2 First upgrade - 50 Cookies</button>
+        </button>
         <br>
         <br>
-        <button onClick="saveandquit()">Save your progress</button>
+        <button onClick="saveandquit()">Save your progress
+        </button>
       </div>
     </center>
 	
@@ -67,10 +70,10 @@
         if (click >= 50){
           boosted = true;
           var upgrade = document.getElementById("upgrade");
+		  upgrade.style.display = "none";
           boost = 2;
           click = click - 50;
           document.getElementById("scoreboard").innerHTML = click;
-          upgrade.style.display = "none";
         }
         else{
           alert("You don't have enough cookies.")
